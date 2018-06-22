@@ -1,0 +1,48 @@
+<ion-header class="header">
+          <ion-row class="content">
+
+             <ion-col col-2><img class="photo" src="{{user_head_img_code}}">
+             </ion-col>
+            <ion-col col-8 class="info">
+               <div class="m-bottom">
+                  <span class="white m-right-large">{{userInfo.mobile}}</span>
+                  <span *ngIf="userInfo.authent_sts == 1"><img  class="status" src="./assets/imgs/my_v.png"></span>
+                  <span *ngIf="userInfo.authent_sts != 1"><img  class="status" src="./assets/imgs/my_unv.png"></span>
+               </div>
+               <div class="m-bottom">
+                  <span class="white m-right"><ion-icon ios="logo-usd"></ion-icon>{{balanceInfo.earn_amount}}元</span> <a class="a-orange m-right" (click)="earnest_Recharge()">充值</a><a class="a-orange" (click)="moneyRecordSearch()">记录查询</a>
+               </div>
+               <div class="m-bottom">
+                <span class="white m-right"><ion-icon ios="ios-lock"></ion-icon>{{balanceInfo.deposit_amount}}元</span> <a class="a-orange m-right" (click)="account_Recharge()">充值</a><a class="a-orange" (click)="accountRecordSearch()">记录查询</a>
+               </div>
+            </ion-col>
+            <ion-col col-2 class="setting" (click)="personalSettings()">设置&nbsp;<ion-icon ios="ios-arrow-forward"></ion-icon></ion-col>
+          </ion-row>
+</ion-header>
+
+
+<ion-content padding>
+    <ion-list >
+        <button ion-item  (click)="carInfo()">
+          <ion-icon ios="ios-person" class="icon"></ion-icon>修改车辆信息
+        </button>
+        <button ion-item>
+          <ion-icon ios="ios-document" class="icon"></ion-icon>收入报表
+        </button>
+        <button ion-item>
+          <ion-icon ios="logo-usd" class="icon"></ion-icon>提现管理
+        </button>
+        <button ion-item (click)="systemSettings()">
+          <ion-icon ios="ios-settings" class="icon"></ion-icon>系统设置
+        </button>
+        <button ion-item>
+          <ion-icon ios="ios-home" class="icon"></ion-icon>拿箱单地址
+        </button>
+        <button ion-item>
+          <ion-icon ios="ios-information-circle" class="icon"></ion-icon>用户使用帮助
+        </button>
+        <button ion-item (click)="aboutUs()">
+          <ion-icon ios="ios-information-circle" class="icon"></ion-icon>关于我们
+        </button>
+    </ion-list>
+</ion-content>

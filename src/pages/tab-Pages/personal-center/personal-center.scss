@@ -1,0 +1,59 @@
+page-personal-center {
+    .icon{
+       margin-right:1em
+    }
+
+    .header{
+        height:100px; 
+        background: #1c4aa0;
+    }
+
+    .photo{
+       width:60px; 
+       height:60px; 
+       margin-left: 5px;
+       border-radius:50%; 
+       overflow:hidden;
+    }
+
+    .m-bottom{
+        margin-bottom: 5px;
+    }
+
+    .m-right-large{
+        margin-right: 23px;
+    }
+
+    .m-right{
+        margin-right: 7px;
+    }
+
+    .content{
+        margin-top: 10px;
+    }
+
+    .info{
+        padding-left: 15px;
+        font-size: 12px;
+    }
+
+    .setting{
+        color : #fffffF;
+        margin-top: 15px;
+        font-size: 11px;
+    }
+
+    .white{
+        color : #fffffF;
+    }
+
+    .a-orange{
+        color: #ff9900;
+        text-decoration:underline
+    }
+
+    .status{
+        width:50px;
+        height:15px;
+    }
+}

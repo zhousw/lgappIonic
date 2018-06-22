@@ -1,0 +1,36 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-title>{{title}}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+    <ion-row  style="height:22%;width:100%;">
+      <img src="./assets/imgs/index_bannner.png">
+    </ion-row>
+    
+    <!-- 先写在页面上，之后移到scss上 -->
+    <ion-row style="height:38%;margin-top:3px;">
+      <div style="background:#FFA07A;padding-top:10%;width:49%;margin-right:2%;text-align:center;">
+          <ion-icon ios="ios-car-outline" style="font-size:80px;"></ion-icon>
+              <p>正在拉的活</p>
+      </div>
+      <div style="background:#7B68EE;padding-top:10%;width:49%;text-align:center;">
+          <ion-icon ios="ios-cart-outline" style="font-size:80px;"></ion-icon>
+              <p>我拉的活</p>
+      </div>
+    </ion-row>
+    <ion-row style="height:38%;margin-top:3px;">
+        <div style="background:#F4A460;padding-top:10%;width:49%;margin-right:2%;text-align:center;">
+            <ion-icon ios="ios-people-outline" style="font-size:80px;"></ion-icon>
+                <p>专属客服</p>
+        </div>
+        <div style="background:#2E8B57;padding-top:10%;width:49%;text-align:center;" (click)="goLock()">
+            <ion-icon ios="ios-lock-outline" style="font-size:8rem;"></ion-icon>
+                <p>用还锁</p>
+        </div>
+      </ion-row>
+      <ion-fab bottom center>
+          <button ion-fab (click)="goLock()">抢活</button>
+      </ion-fab>
+</ion-content>

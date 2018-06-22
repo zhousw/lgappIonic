@@ -1,0 +1,34 @@
+<ion-header>
+  <ion-navbar color="primary">
+      <ion-buttons left>
+          <button ion-button icon-only color="royal" (click)="closeModal();">
+              <ion-icon ios="ios-close-circle-outline"></ion-icon>
+          </button>
+      </ion-buttons>
+      <ion-title text-center>驾驶信息修改</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-list>
+    <form [formGroup]="driverForm" (submit)="modifyDriver(driverForm.value)">
+        <ion-item>
+          <ion-row>
+            <ion-col col-6>驾驶证：</ion-col>
+            <ion-col col-5></ion-col>
+            <ion-col col-1>
+              <ion-icon ios="ios-camera-outline" class="icon" (click)="update_drivingImg()"></ion-icon>
+            </ion-col>
+          </ion-row>
+        </ion-item>
+        <ion-item>
+            <ion-label>驾驶证号码：</ion-label><ion-input formControlName="drivingNo" required  type="text"></ion-input>
+        </ion-item>
+
+      <ion-item>
+        <img class="full-image" class="img" src="{{driving_img_code}}">
+      </ion-item>
+        <button ion-button full type="submit">提交</button>
+    </form>
+</ion-list>
+</ion-content>

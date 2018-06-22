@@ -1,0 +1,69 @@
+<ion-header>
+    <ion-navbar color="primary">
+        <ion-title text-center>{{title}}</ion-title>
+    </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+    <div>
+        <ion-segment [(ngModel)]="tabs">
+            <ion-segment-button value="login">
+                登陆账号
+            </ion-segment-button>
+            <ion-segment-button value="register">
+                注册账号
+            </ion-segment-button>
+        </ion-segment>
+    </div>
+
+    <div [ngSwitch]="tabs">
+        <ion-list *ngSwitchCase="'login'">
+            <form [formGroup]="loginForm" (submit)="login(loginForm.value)">
+                <ion-item>
+                    <ion-label>
+                        <ion-icon ios="ios-phone-portrait-outline"></ion-icon>
+                    </ion-label>
+                    <ion-input formControlName="userName" required placeholder="手机号/账号" value="13868986074"></ion-input>
+                </ion-item>
+                <ion-item>
+                    <ion-label>
+                        <ion-icon ios="ios-lock-outline"></ion-icon>
+                    </ion-label>
+                    <ion-input formControlName="password" required placeholder="请输入6-12位的密码" type="password" value="123456"></ion-input>
+                </ion-item>
+
+                <button ion-button full type="submit" class="orange">登陆</button>
+            </form>
+        </ion-list>
+
+        <ion-list *ngSwitchCase="'register'">
+            <form [formGroup]="registerForm" >
+                <ion-item>
+                    <ion-label>
+                        <ion-icon ios="ios-phone-portrait-outline"></ion-icon>
+                    </ion-label>
+                    <ion-input formControlName="mobile" [(ngModel)]="mobile"  required placeholder="手机号/账号"></ion-input>
+                </ion-item>
+                <ion-item>
+                    <ion-icon ios="ios-chatbubbles-outline">&nbsp;&nbsp;&nbsp;</ion-icon>
+                    <input formControlName="checkCode" required placeholder="请输入验证码" style="border:none;width:50%;" />
+                    <button ion-button outline (click)="sendCheckCode()">获取验证码</button>
+                </ion-item>
+                <ion-item>
+                    <ion-label>
+                        <ion-icon ios="ios-lock-outline"></ion-icon>
+                    </ion-label>
+                    <ion-input formControlName="password" required placeholder="请输入6-12位的密码" type="password"></ion-input>
+                </ion-item>
+                <ion-item>
+                    <ion-label>
+                        <ion-icon ios="ios-lock-outline"></ion-icon>
+                    </ion-label>
+                    <ion-input formControlName="repassword" required placeholder="请输入确认密码" type="password"></ion-input>
+                </ion-item>
+            </form>
+            <button ion-button full (click)="register(registerForm.value)" class="orange">注册</button>
+        </ion-list>
+    </div>
+</ion-content>

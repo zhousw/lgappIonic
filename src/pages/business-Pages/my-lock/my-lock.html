@@ -1,0 +1,28 @@
+<ion-header>
+  <ion-navbar color="primary">
+      <ion-title text-center>{{title}}</ion-title>
+      <ion-buttons right>
+        <button ion-button icon-only color="royal" (click)="addLock();">
+            <ion-icon ios="ios-add-outline"></ion-icon>
+        </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-list *ngFor="let lock of lockList;index as i;">
+    <ion-item >
+      <ion-row>
+        <ion-col col-2><img src="./assets/imgs/blue_lock.png"></ion-col>
+        <ion-col col-8 (click)="chooseLock()">
+          {{lock.lock_name}} &nbsp; 
+          <span class="status" *ngIf="lock.lockStatus==0">空闲</span>
+          <span class="status" *ngIf="lock.lockStatus==1">在用</span>
+          <br>
+          <span style="font-size:16px">锁号：{{lock.lock_no}}</span>
+        </ion-col>
+        <ion-col col-2 (click)="delete(i,lock.lock_no)"><img src="./assets/imgs/close.png"></ion-col>
+      </ion-row>
+    </ion-item>
+  </ion-list>
+</ion-content>

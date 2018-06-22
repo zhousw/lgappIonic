@@ -1,0 +1,31 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-buttons left>
+      <button ion-button icon-only color="royal" (click)="closeModal();">
+        <ion-icon ios="ios-close-circle-outline"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title text-center>银行卡绑定</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-list>
+    <form [formGroup]="bankForm" (submit)="modifyBank(bankForm.value)">
+      <ion-item>
+        <ion-label>开户行名称：</ion-label>
+        <ion-input formControlName="bankName" required type="text"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>银行账户名：</ion-label>
+        <ion-input formControlName="cardName" required type="text"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>银行卡号：</ion-label>
+        <ion-input formControlName="cardNo" required type="text"></ion-input>
+      </ion-item>
+
+      <button ion-button full type="submit">提交</button>
+    </form>
+  </ion-list>
+</ion-content>

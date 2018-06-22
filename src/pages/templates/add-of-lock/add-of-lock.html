@@ -1,0 +1,29 @@
+<ion-header>
+  <ion-navbar color="primary">
+      <ion-buttons left>
+          <button ion-button icon-only color="royal" (click)="closeModal();">
+              <ion-icon ios="ios-close-circle-outline"></ion-icon>
+          </button>
+      </ion-buttons>
+      <ion-title text-center>添加锁</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content padding>
+    <ion-grid>
+        <ion-row>
+            <ion-col col-3> 别名：</ion-col>
+            <ion-col col-9><input type="text" [(ngModel)]="lock.lock_name"/></ion-col>
+        </ion-row>
+        <ion-row>
+            <ion-col col-3> 锁号：</ion-col>
+            <ion-col col-5><input type="text" [(ngModel)]="lock.lock_no"/></ion-col>
+            <ion-col col-4 class="scan" (click)="qrScan()"><ion-icon ios="ios-qr-scanner"></ion-icon></ion-col>
+        </ion-row>
+       
+        <ion-row>
+            <ion-col col-2></ion-col>
+            <ion-col col-10><button ion-button class="btn-orange" (click)="add()">确认添加</button></ion-col>
+        </ion-row>
+    </ion-grid>
+  
+</ion-content>

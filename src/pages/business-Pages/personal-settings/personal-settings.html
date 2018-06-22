@@ -1,0 +1,108 @@
+<ion-header>
+    <ion-navbar color="primary">
+        <ion-title>{{title}}</ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+    <ion-list (click)="update_userInfo()">
+        <ion-item>
+            <ion-row>
+                <ion-col col-5>头像：</ion-col>
+                <ion-col col-7>
+                    <img class="img" src="{{user_head_img_code}}">
+                </ion-col>
+            </ion-row>
+        </ion-item>
+        <ion-item>
+            <ion-row>
+                <ion-col col-5>姓名：</ion-col>
+                <ion-col col-6>{{userInfo.user_name}}</ion-col>
+                <ion-col col-1>
+                    <ion-icon ios="ios-arrow-forward-outline" class="icon"></ion-icon>
+                </ion-col>
+            </ion-row>
+        </ion-item>
+        <ion-item>
+            <ion-row>
+                <ion-col col-5>账户名：</ion-col>
+                <ion-col col-6>{{userInfo.mobile}}</ion-col>
+                <ion-col col-1>
+                    <ion-icon ios="ios-arrow-forward-outline" class="icon"></ion-icon>
+                </ion-col>
+            </ion-row>
+        </ion-item>
+        <ion-item>
+            <ion-row>
+                <ion-col col-5>联系电话：</ion-col>
+                <ion-col col-6>{{userInfo.tel}}</ion-col>
+                <ion-col col-1>
+                    <ion-icon ios="ios-arrow-forward-outline" class="icon"></ion-icon>
+                </ion-col>
+            </ion-row>
+        </ion-item>
+    </ion-list>
+
+    <ion-list>
+        <ion-item>
+            <ion-row (click)="update_passWord()">
+                <ion-col col-5>修改密码：</ion-col>
+                <ion-col col-6></ion-col>
+                <ion-col col-1>
+                    <ion-icon ios="ios-arrow-forward-outline" class="icon"></ion-icon>
+                </ion-col>
+            </ion-row>
+        </ion-item>
+    </ion-list>
+
+    <ion-list (click)="update_driverInfo()">
+        <ion-item>
+            <ion-row>
+                <ion-col col-5>驾驶证号码：</ion-col>
+                <ion-col col-6>{{userInfo.driving_no}}</ion-col>
+                <ion-col col-1>
+                    <ion-icon ios="ios-arrow-forward-outline" class="icon"></ion-icon>
+                </ion-col>
+            </ion-row>
+        </ion-item>
+        <ion-item>
+            <ion-row>
+                <ion-col col-5>驾驶证：</ion-col>
+                <ion-col col-7>
+                  <img class="img" src="{{driving_img_code}}">
+                </ion-col>
+            </ion-row>
+        </ion-item>
+    </ion-list>
+
+    <ion-list (click)="update_bankInfo()">
+        <ion-item>
+            <ion-row >
+                <ion-col col-5>开户行名称：</ion-col>
+                <ion-col col-6>{{userInfo.bankName}}</ion-col>
+                <ion-col col-1>
+                    <ion-icon ios="ios-arrow-forward-outline" class="icon"></ion-icon>
+                </ion-col>
+            </ion-row>
+        </ion-item>
+        <ion-item>
+            <ion-row >
+                <ion-col col-5>银行账户名：</ion-col>
+                <ion-col col-6>{{userInfo.cardName}}</ion-col>
+                <ion-col col-1>
+                    <ion-icon ios="ios-arrow-forward-outline" class="icon"></ion-icon>
+                </ion-col>
+            </ion-row>
+        </ion-item>
+        <ion-item>
+            <ion-row >
+                <ion-col col-4>银行卡号：</ion-col>
+                <ion-col col-7>{{userInfo.cardNo}}</ion-col>
+                <ion-col col-1>
+                    <ion-icon ios="ios-arrow-forward-outline" class="icon"></ion-icon>
+                </ion-col>
+            </ion-row>
+        </ion-item>
+
+    </ion-list>
+</ion-content>
