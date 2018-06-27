@@ -26,7 +26,8 @@ export class LoginPage {
   }
   private loginForm : FormGroup;
   private registerForm : FormGroup;
-  mobile = ''
+  mobile = '';
+  publicKey = window.localStorage.getItem("publicKey");
   constructor(
     public navCtrl: NavController,
     private commonUtil:CommonUtil,
@@ -57,29 +58,25 @@ export class LoginPage {
           return;
         }
         let loading = this.commonUtil.loading('努力加载中···');
-        this.loginServiceProvider.getPublicKey("67b65daf6343e8070f43457511733f69")
-                .then(res=>{
-                  if(res.retcode == AppConfig.responseCode.successCode){
-                      let publicKey = angular.fromJson(res.retObj).publicKey;
-                      let encrypt = new Encrypt.JSEncrypt();
-                      encrypt.setPublicKey(publicKey);
-                      password = encrypt.encrypt(password);
-                      let imei="";
-                      let phoneNum = userName;
-                      this.loginServiceProvider.login(userName,password,imei,phoneNum)
-                                    .then(res=>{
-                                      if(res.retcode == AppConfig.responseCode.successCode){
-                                          window.localStorage.setItem("_token",angular.fromJson(res.retObj).token);
-                                          window.localStorage.setItem("userInfo",res.retObj);
-                                          this.loginInfo.username = userName;
-                                          this.loginInfo.password = password;
-                                          window.localStorage.setItem("loginInfo",angular.toJson(this.loginInfo));
-                                          this.navCtrl.setRoot('TabsPage');
-                                      }  
-                                    })
-                  }
-                    
-        })
+      
+        let encrypt = new Encrypt.JSEncrypt();
+        encrypt.setPublicKey(this.publicKey);
+        password = encrypt.encrypt(password);
+        let imei="";
+        let phoneNum = userName;
+  
+        this.loginServiceProvider.login(userName,password,imei,phoneNum)
+                      .then(res=>{
+                        if(res.retcode == AppConfig.responseCode.successCode){
+                            window.localStorage.setItem("_token",angular.fromJson(res.retObj).token);
+                            window.localStorage.setItem("userInfo",res.retObj);
+                            this.loginInfo.username = userName;
+                            this.loginInfo.password = password;
+                            window.localStorage.setItem("loginInfo",angular.toJson(this.loginInfo));
+                            this.navCtrl.setRoot('TabsPage');
+                        }  
+                      })
+            
         loading.dismiss();
     }
 
@@ -105,6 +102,9 @@ export class LoginPage {
         this.commonUtil.toast_position("2次输入的密码不一致",'bottom');
         return;
       }
+      let encrypt = new Encrypt.JSEncrypt();
+      encrypt.setPublicKey(this.publicKey);
+      password = encrypt.encrypt(password);
       this.loginServiceProvider.carRegister(mobile,password,checkCode)
           .then(res=>{
             if(res.retcode == AppConfig.responseCode.successCode){

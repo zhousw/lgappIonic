@@ -26,13 +26,13 @@ export class LockServiceProvider {
   /**
    * 用锁记录查询
    */
-  qryLockOrder(userId,currentPage,container_no,order_no,lock_no,startTime,endTime){
+  qryLockOrder(userId,currentPage,startTime,endTime){
     this.requestData.set_reqBody({
         userId:userId,
         currentPage:currentPage,
-        container_no:container_no,
-        order_no:order_no,
-        lock_no:lock_no,
+        container_no:'',
+        order_no:'',
+        lock_no:'',
         startTime:startTime,
         endTime:endTime
     })

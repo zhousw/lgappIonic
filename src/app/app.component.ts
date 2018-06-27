@@ -5,12 +5,16 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { Events} from 'ionic-angular';
 import { AppServiceProvider } from "../providers/app-service/app-service";
 import { Network } from '@ionic-native/network';
+import { LoginServiceProvider } from '../providers/login-service/login-service';
+import { AppConfig } from "../app/appConfig";
+import angular from 'angular';
 
 @Component({
   templateUrl: 'app.html',
   providers:[
     Network,
-    AppServiceProvider
+    AppServiceProvider,
+    LoginServiceProvider
   ]
 })
 
@@ -25,7 +29,8 @@ export class MyApp {
     private app:App,
     private alertCtrl:AlertController,
     private appServiceProvider:AppServiceProvider,
-    private network:Network
+    private network:Network,
+    private loginServiceProvider:LoginServiceProvider
   ) {
     this.startNetDetect();
     platform.ready().then(() => {
@@ -39,6 +44,17 @@ export class MyApp {
       }
     });
     this.EventHandlers();
+    this.getPublicKey();
+  }
+
+  private getPublicKey(){
+    this.loginServiceProvider.getPublicKey("67b65daf6343e8070f43457511733f69")
+                .then(res=>{
+                  if(res.retcode == AppConfig.responseCode.successCode){
+                      let publicKey = angular.fromJson(res.retObj).publicKey;
+                      window.localStorage.setItem("publicKey",publicKey);
+                  }
+      });
   }
 
   private EventHandlers() {  //监听器

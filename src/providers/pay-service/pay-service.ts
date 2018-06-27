@@ -66,12 +66,11 @@ export class PayServiceProvider {
    * @param use_time 
    * @param container_no 箱号
    */
-  createLockOrder(userId,lock_no,lock_type,use_time,container_no){
+  createLockOrder(userId,lock_no,lock_type,container_no){
     this.requestData.set_reqBody({
       userId:userId,
       lock_no:lock_no,
       lock_type:lock_type,
-      use_time:use_time,
       container_no:container_no
     })
     return this.commonServiceProvider.HttpPost(this.appConfig.getRootUrl()+"/createLockOrder",this.requestData);

@@ -19,7 +19,6 @@ export class PayOfLockPage {
 
   userId = this.appConfig.getUserInfo().id;
   lock_no = ""
-  useTime = ""
   price = ""
   container_no = ""
   orderInfo = {
@@ -47,7 +46,7 @@ export class PayOfLockPage {
   }
 
   toPay(){
-    this.PaySheet(this.userId,this.lock_no,this.useTime,this.container_no);
+    this.PaySheet(this.userId,this.lock_no,this.container_no);
   }
 
   qrScan(){
@@ -67,7 +66,7 @@ export class PayOfLockPage {
       });
   }
 
-  private PaySheet(userId,lock_no,useTime,container_no) {
+  private PaySheet(userId,lock_no,container_no) {
     this.payServiceProvider.depositEnough(userId)
       .then(res=>{
         if(res.retcode == AppConfig.responseCode.successCode){
@@ -87,7 +86,7 @@ export class PayOfLockPage {
                 role: 'destructive',
                 handler: () => {
                   let loading = this.commonUtil.loading('努力加载中···');
-                  this.payServiceProvider.createLockOrder(userId,lock_no,1,useTime,container_no)
+                  this.payServiceProvider.createLockOrder(userId,lock_no,1,container_no)
                     .then(res=>{
                       if(res.retcode == AppConfig.responseCode.successCode){
                         this.orderInfo = this.commonUtil.parseData(res.retObj)

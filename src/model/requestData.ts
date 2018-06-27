@@ -11,7 +11,7 @@ export class RequestData {
         if( ! this.isNull(_token)){
             this.reqHead = new reqHead(_token,userInfo.type,userInfo.id);
         }else{
-            this.reqHead = new reqHead("","1","1");
+            this.reqHead = new reqHead("","1","0");
         }
         this.reqBody = {};
     }
