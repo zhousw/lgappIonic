@@ -97,6 +97,7 @@ export class UserServiceProvider {
    * 图片上传
    */
   uploadImg (imgUrl){
+    alert(imgUrl)
     let flag = false;
         let loading = this.commonUtil.loading('努力加载中···');
         let options: FileUploadOptions = {
