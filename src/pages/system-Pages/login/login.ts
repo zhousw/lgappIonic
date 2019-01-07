@@ -63,6 +63,7 @@ export class LoginPage {
         let encrypt = new Encrypt.JSEncrypt();
         encrypt.setPublicKey(this.publicKey);
         password = encrypt.encrypt(password);
+        console.log(password);
         let imei="";
         let phoneNum = userName;
   
@@ -104,28 +105,31 @@ export class LoginPage {
         return;
       }
       let encrypt = new Encrypt.JSEncrypt();
+      console.info(this.publicKey);
       encrypt.setPublicKey(this.publicKey);
       password = encrypt.encrypt(password);
       console.log(password)
       
-      // console.log(new Buffer('YWRtaW4=','base64').toString());//解码
-      // console.log(new Buffer('admin').toString('base64'));//编码
+      //console.log(new Buffer('YWRtaW4=','base64').toString());//解码
+      //console.log(new Buffer('admin').toString('base64'));//编码
 
-      password = new Buffer(password).toString('base64');
-      console.log(password)
+      //password = new Buffer(password).toString('base64');
+      //console.log(password)
 
-      password = this.stringToByte(password);
-      console.log(password)
+      let bytess = this.convertBase64ToBytes(password);
+      console.log(bytess)
+      //password = this.stringToByte(password);
+      //console.log(password)
       
-      password = this.Bytes2HexString(password);
+      password = this.Bytes2HexString(bytess);
       console.log(password)
 
-      // this.loginServiceProvider.carRegister(mobile,password,checkCode)
-      //     .then(res=>{
-      //       if(res.retcode == AppConfig.responseCode.successCode){
-      //          this.tabs = 'register';
-      //       }  
-      //     })
+      this.loginServiceProvider.carRegister(mobile,password,checkCode)
+          .then(res=>{
+            if(res.retcode == AppConfig.responseCode.successCode){
+               this.tabs = 'register';
+            }  
+          })
 
     }
 
@@ -195,5 +199,17 @@ Bytes2HexString(arrBytes) {
   return str;
 }
 
+convertBase64ToBytes(base64Str) {
+  var bytes = window.atob(base64Str); 
+  //处理异常,将ascii码小于0的转换为大于0
+  var ab = new ArrayBuffer(bytes.length);
+  var ia = new Uint8Array(ab);
+  for (var i = 0; i < bytes.length; i++) {
+  ia[i] = bytes.charCodeAt(i);
+  }
+  return ia;
+  } 
 
 }
+
+
