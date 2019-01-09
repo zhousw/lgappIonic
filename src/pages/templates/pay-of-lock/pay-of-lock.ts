@@ -67,7 +67,7 @@ export class PayOfLockPage {
   }
 
   private PaySheet(userId,lock_no,container_no) {
-    this.payServiceProvider.depositEnough(userId)
+    this.payServiceProvider.checkLock(userId, lock_no)
       .then(res=>{
         if(res.retcode == AppConfig.responseCode.successCode){
           let enoughResult =  this.commonUtil.parseData(res.retObj).enough

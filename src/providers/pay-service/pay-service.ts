@@ -97,11 +97,11 @@ export class PayServiceProvider {
   /**
    * 判断保证金是否充足
    */
-  depositEnough(userId){
+  checkLock(userId, lock_no){
     this.requestData.set_reqBody({
       userId:userId,
     })
-    return this.commonServiceProvider.HttpPost(this.appConfig.getRootUrl()+"/depositEnough",this.requestData);
+    return this.commonServiceProvider.HttpPost(this.appConfig.getRootUrl()+"/checkLockSts",this.requestData);
   }
 
   /**

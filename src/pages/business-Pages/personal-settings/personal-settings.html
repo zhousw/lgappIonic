@@ -103,6 +103,6 @@
                 </ion-col>
             </ion-row>
         </ion-item>
-
     </ion-list>
+    <button *ngIf="this.status != 1" ion-button block (click)="auth()">提交认证</button>
 </ion-content>

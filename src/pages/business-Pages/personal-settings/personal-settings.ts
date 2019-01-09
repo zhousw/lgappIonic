@@ -34,10 +34,9 @@ export class PersonalSettingsPage {
   }
 
   update_userInfo(){
-    // if(this.checkStatus()){
-    //   this.commonUtil.toast_position("用户已认证或认证中不可修改",'middle');
-    //   return;
-    // }
+    if(this.checkStatus()){
+      return;
+    }
     let modal = this.modalCtrl.create('UserInfoPage')
     modal.onDidDismiss( data=>{
       this.navCtrl.pop()
@@ -46,10 +45,9 @@ export class PersonalSettingsPage {
   }
 
   update_driverInfo(){
-    // if(this.checkStatus()){
-    //   this.commonUtil.toast_position("用户已认证或认证中不可修改",'middle');
-    //   return;
-    // }
+    if(this.checkStatus()){
+      return;
+    }
     let modal = this.modalCtrl.create('DriverInfoPage')
     modal.onDidDismiss( data=>{
       this.navCtrl.pop()
@@ -58,10 +56,9 @@ export class PersonalSettingsPage {
   }
 
   update_bankInfo(){
-    // if(this.checkStatus()){
-    //   this.commonUtil.toast_position("用户已认证或认证中不可修改",'middle');
-    //   return;
-    // }
+    if(this.checkStatus()){
+      return;
+    }
     let modal = this.modalCtrl.create('BankInfoPage')
     modal.onDidDismiss( data=>{
       this.navCtrl.pop()
@@ -71,10 +68,15 @@ export class PersonalSettingsPage {
 
   checkStatus(){
     if(this.status == 1){
+      this.commonUtil.toast_position("用户已认证或认证中不可修改",'middle');
       return true;
     }else{
       return false;
     }
+  }
+
+  auth() {
+    alert('提交认证')
   }
 
 }

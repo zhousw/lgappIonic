@@ -99,4 +99,32 @@ export class CommonUtil{
         }
         return  timestamp + tmp;
     }
+
+    bytes2HexString(arrBytes) {
+			var str = "";
+			for (var i = 0; i < arrBytes.length; i++) {
+				var tmp;
+				var num=arrBytes[i];    if (num < 0) {
+					tmp =(255+num+1).toString(16);
+				} else {
+					tmp = num.toString(16);
+				}
+				if (tmp.length == 1) {
+					tmp = "0" + tmp;
+				}
+				str += tmp;
+			}
+			return str;
+		}
+      
+		convertBase64ToBytes(base64Str) {
+			var bytes = window.atob(base64Str); 
+			//处理异常,将ascii码小于0的转换为大于0
+			var ab = new ArrayBuffer(bytes.length);
+			var ia = new Uint8Array(ab);
+			for (var i = 0; i < bytes.length; i++) {
+				ia[i] = bytes.charCodeAt(i);
+			}
+			return ia;
+		} 
 }

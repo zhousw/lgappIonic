@@ -102,7 +102,8 @@ export class UserServiceProvider {
         let loading = this.commonUtil.loading('努力加载中···');
         let options: FileUploadOptions = {
           fileKey : 'fileObject',
-          fileName: 'fileObject'
+          fileName: 'fileObject',
+          mimeType: 'image/jpeg'
         }
         const fileTransfer: FileTransferObject = this.fileTransfer.create();
           fileTransfer.upload(imgUrl,this.appConfig.getUploadImgUrl(),options)
