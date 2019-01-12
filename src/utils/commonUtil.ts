@@ -88,16 +88,14 @@ export class CommonUtil{
 
     /**
      * 生成随机字符串
-     * @param length 位数
+     * @param expect 位数
      */
-    randomString(length)  {
-        let  randomString="0123456789qwertyuioplkjhgfdsazxcvbnm";
-        let  tmp="";
-        let timestamp = new Date().getTime();
-        for(let  i=0;i<  length;i++)  {
-            tmp  +=  randomString.charAt(Math.ceil(Math.random()*100000000) % randomString.length);
-        }
-        return  timestamp + tmp;
+    randomString(expect) {
+			let str = Math.random().toString(36).substring(2);
+			while (str.length < expect) {
+					str += Math.random().toString(36).substring(2);
+			}
+			return str.substring(0, expect);
     }
 
     bytes2HexString(arrBytes) {

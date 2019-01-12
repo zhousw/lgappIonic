@@ -167,7 +167,7 @@ export class LockPage {
         {
           text: '确定',
           handler: data => {
-            var actionSheet:ActionSheet = this.componentUtil.PaySheet(this.userId,data,0)
+            var actionSheet:ActionSheet = this.componentUtil.PaySheet(this.userId,data,1)
              actionSheet.onWillDismiss(data=>{
               this.qryBalance();
             })
@@ -194,7 +194,7 @@ export class LockPage {
         {
           text: '确认去支付',
           handler: data => {
-            this.componentUtil.wechatPaySheet(this.userId,data.amount,1) ;
+            this.componentUtil.wechatPaySheet(this.userId,data.amount,0) ;
           }
         }
       ]

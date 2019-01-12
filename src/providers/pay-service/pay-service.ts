@@ -112,7 +112,7 @@ export class PayServiceProvider {
       userId:userId,
       amount:amount,
       amount_type:amount_type,
-      pay_type:'MWEB'
+      pay_type:'APP'
     })
     return this.commonServiceProvider.HttpGet(this.appConfig.getRootUrl()+"/chargeAmount",this.requestData);
   }
